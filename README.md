@@ -7,8 +7,7 @@ This is WIP, maybe here you will find more information:
 
 # License
 
-In the resources folder you find Sources.txt, where all resources used
-are listed.
+In the resources folder you find [sources.txt](https://raw.githubusercontent.com/rubienr/MarlinDgusResources/creality-ender-5-plus/resources/sources.txt), where all resources used are listed.
 
 # Contributions
 
