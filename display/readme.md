@@ -14,3 +14,4 @@
 
 * documentation (PDF) delivered with DGUS_Setup.exe
 * videos provided on http://www.ampdisplay.com/download1.php
+* stack pointer (SP) and variable pointer (VP) documentation https://cdn.papouch.com/data/user-content/old_eshop/files/DIS_DMT48270T043_3WT/dgus-command-demonstration.pdf
