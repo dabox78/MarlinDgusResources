@@ -1,6 +1,6 @@
 # Project Startup Howto
 
-1. install DGUS_Setup_vX.Y.exe from http://www.ampdisplay.com/download1.php
+1. install DGUS_Setup_vX.Y.exe from http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS
 2. run DGUS_VX.Y
 3. open project file: DWprj.hmi
   1. load font file
@@ -15,3 +15,4 @@
 * documentation (PDF) delivered with DGUS_Setup.exe
 * videos provided on http://www.ampdisplay.com/download1.php
 * stack pointer (SP) and variable pointer (VP) documentation https://cdn.papouch.com/data/user-content/old_eshop/files/DIS_DMT48270T043_3WT/dgus-command-demonstration.pdf
+* http://www.dwin.com.cn/service/en/file/id/13
