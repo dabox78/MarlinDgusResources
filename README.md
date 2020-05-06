@@ -12,10 +12,3 @@ In the resources folder you find a [listing](resources/readme.md) of all resourc
 # Contributions
 
 Please make sure to only use FOSS compatible resources.
-
-# UI Design software
-
-* The software used to design the UI is DGUS_Setup_v5.1 and can be found here: http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS
-
-* Alternative software to design the UI is DGUS_V7xxx and can be found here: http://www.dwin.com.cn/service/en/file/id/13
-
