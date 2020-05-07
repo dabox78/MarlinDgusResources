@@ -17,4 +17,4 @@
 * stack pointer (SP) and variable pointer (VP) documentation https://cdn.papouch.com/data/user-content/old_eshop/files/DIS_DMT48270T043_3WT/dgus-command-demonstration.pdf
 * http://www.dwin.com.cn/service/en/file/id/13
   * T5L_DGUSII Application Development Guide
-  * DMT48270C043_06W_DATASHEET.pdf
+  * DMT48270C043_06W_DATASHEET.pdf (http://www.dwin.com.cn/home/Index/download_file?download_id=3151)
