@@ -1,6 +1,6 @@
 # Sources
 * License: NA
-* <this-repository>/resources/gimp
+* < this-repository >/resources/gimp
  
 # Automatic Export from GIMP file (.xcf)
 
