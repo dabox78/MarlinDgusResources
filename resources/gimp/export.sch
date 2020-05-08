@@ -4,7 +4,7 @@
       (layer (vector-ref layers (- no 1)))
       (layername (car (gimp-item-get-name layer)))
       (basename (car (gimp-image-get-name 1)))
-      (rawfilename (string-append (string-append basename "_") layername))
+      (rawfilename (string-append (string-append layername "_") basename))
       (filename (string-append rawfilename ".bmp"))
       
       )
