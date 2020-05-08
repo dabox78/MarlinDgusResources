@@ -1,4 +1,4 @@
-# Tooling to Extract and Create configuration
+# Configurations and Tooling to Maintain .cfg Files
 The .cfg file is of type binary and can be edited via hex editor.
 For the tooling we use vim and xxd.
 
