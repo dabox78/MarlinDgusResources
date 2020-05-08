@@ -8,10 +8,10 @@
 00000007: 00  .
 00000008: bc  . 1 system configuration 1
 00000009: 00  . 2 baud rate
-0000000a: 44  D
+0000000a: 44  .
 0000000b: 5a  . 1 backlight standby: 0x5a to enable 0 otherwise
-0000000c: 64  d 1 backlight intensity when off
-0000000d: 64  d 1 backlitght intensity when on
+0000000c: 64  . 1 backlight intensity when off
+0000000d: 64  . 1 backlitght intensity when on
 0000000e: ff  . 2 backlight timeout ms
 0000000f: 00  .
 00000010: 00  . 1 do not touch (LCD configuration)
@@ -26,17 +26,17 @@
 00000019: 03  . 1 V_W
 0000001a: 14  . 1 V_S
 0000001b: 02  . 2 V_D vertical display resolution (272 = 0x0110)
-0000001c: 58  X 
+0000001c: 58  . 
 0000001d: 0c  . 1 V_E
 0000001e: 00  . 1 do not touch
 0000001f: 00  . 1 reserved
 00000020: 00  . 1 picture power on enable: 0x5a to enable 0 otherwise
 00000021: 00  . 2 picture power on: page id when power on
 00000022: 00  .
-00000023: 5a  Z 1 music power on: 0x5a to enable 0 therwise
-00000024: 06  . 1 startup music id or otherwise 0 
-00000025: 00  . 1 memory block number
-00000026: af  . 1 volume
+00000023: 5a  . 1 music power on: 0x5a to enable 0 otherwise
+00000024: 7f  . 1 startup music id 0 otherwise
+00000025: 01  . 1 memory blocks of startup music, 0 to disable
+00000026: ff  . 1 volume
 00000027: 00  . 1 do not change (TP_Set_En): 0x5a to enable 0 otherwise
 00000028: 07  . 1 touch pannel mode 
 00000029: 14  . 1 touch sensitivity: 0 lowest, 0xff highest, 0x14 default
