@@ -1,3 +1,7 @@
+# Sources
+* License: NA
+* <this-repository>/resources/gimp
+ 
 # Automatic Export from GIMP file (.xcf)
 
 Everything that is a group within the GIMP project file .xcf will be exported .bmp.

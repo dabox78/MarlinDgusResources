@@ -1,3 +1,14 @@
+# Sources
+
+* License
+  This font has been released into the public domain by its author, Barry Schwartz.
+  This applies worldwide.
+  In some countries this may not be legally possible; if so:
+  Barry Schwartz grants anyone the right to use this work for any purpose, without any conditions, unless such conditions are required by law.
+* Link: NA 
+
+# Notes
+
 1. convert otf to ttf
 2. install ttf
 3. convert font with DW_0Font.exe:
