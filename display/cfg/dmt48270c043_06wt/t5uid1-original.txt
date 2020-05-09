@@ -1,48 +1,48 @@
-00000000: 54  T
+00000000: 54  T 4 idnetification code
 00000001: 35  5
 00000002: 44  D
 00000003: 31  1
-00000004: 00  .
+00000004: 00  . 2 format flash
 00000005: 00  .
-00000006: 00  .
+00000006: 00  . 2 system clock calibration
 00000007: 00  .
-00000008: b8  .
-00000009: 00  .
-0000000a: 44  D
-0000000b: 00  .
-0000000c: 64  d
-0000000d: 64  d
-0000000e: ff  .
+00000008: b8  . 1 system configuration 1
+00000009: 00  . 2 baud rate
+0000000a: 44  .
+0000000b: 00  . 1 backlight standby: 0x5a to enable 0 otherwise
+0000000c: 64  . 1 backlight intensity when on
+0000000d: 64  . 1 backlitght intensity when idle
+0000000e: ff  . 2 backlight timeout ms (high byte)
 0000000f: 00  .
-00000010: 00  .
+00000010: 00  . 1 do not touch (LCD configuration)
 00000011: 00  .
-00000012: 00  .
-00000013: 0d  .
-00000014: 1e  .
-00000015: 10  .
-00000016: 03  .
-00000017: 20   
-00000018: d2  .
-00000019: 03  .
-0000001a: 14  .
-0000001b: 02  .
-0000001c: 58  X
-0000001d: 0c  .
-0000001e: 00  .
-0000001f: 00  .
-00000020: 00  .
-00000021: 00  .
+00000012: 00  . 1 data lactch phase: falling (0) vs rising (1) edge
+00000013: 0d  . 1 pixel clock frequency 500/(*0x13)MHz
+00000014: 1e  . 1 H_W
+00000015: 10  . 1 H_S
+00000016: 03  . 2 H_D horizontal display resolution (0x0320 = 800, 0x01e0 = 480)
+00000017: 20  .
+00000018: d2  . 1 H_E
+00000019: 03  . 1 V_W
+0000001a: 14  . 1 V_S
+0000001b: 02  . 2 V_D vertical display resolution (0x0258 = 600; 0x0110 = 272)
+0000001c: 58  .
+0000001d: 0c  . 1 V_E
+0000001e: 00  . 1 do not touch (TCON_SEL)
+0000001f: 00  . 1 reserved
+00000020: 00  . 1 picture power on enable: 0x5a to enable 0 otherwise
+00000021: 00  . 2 picture power on: page id when power on
 00000022: 00  .
-00000023: 5a  Z
-00000024: 06  .
-00000025: 00  .
-00000026: af  .
-00000027: 00  .
-00000028: 07  .
-00000029: 14  .
-0000002a: 00  .
+00000023: 5a  . 1 music power on: 0x5a to enable 0 otherwise
+00000024: 06  . 1 startup music id 0 otherwise
+00000025: 00  . 1 memory blocks of startup music, 0 to disable
+00000026: af  . 1 volume
+00000027: 00  . 1 do not change (TP_Set_En): 0x5a to enable 0 otherwise
+00000028: 07  . 1 touch pannel mode
+00000029: 14  . 1 touch sensitivity: 0 lowest, 0xff highest, 0x14 default
+0000002a: 00  . 2 reserved, default 0
 0000002b: 00  .
-0000002c: 00  .
-0000002d: 00  .
+0000002c: 00  . 1 system configuration 2
+0000002d: 00  . 3 reserved
 0000002e: 00  .
 0000002f: 00  .
