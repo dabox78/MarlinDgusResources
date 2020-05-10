@@ -3,30 +3,33 @@
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 
-# $1 ... filepath relative to script without extension
-function convert_wav_file()
+# $1 ... source filepath relative to script
+# $2 ... destination filepath relative to script
+function convert_audio_file()
 {
-    ffmpeg -i $1.wav -acodec pcm_s16le -ac 1 -ar 32000 -y converted/$1-32khz-16bit-mono.wav
+    ffmpeg -i $1 -acodec pcm_s16le -ac 1 -ar 32000 -fflags +bitexact -y -loglevel 24 $2
 }
 
 
-function convert_all_wav_files()
+function convert_all_audio_files()
 {
-  
-  for f in `find . -name "*.wav" -maxdepth 1` ; do
-    f=`basename $f .wav`
-    echo "converting $f"
-    convert_wav_file $f
-    echo "done"
+  for filepath in `find . -maxdepth 1 -regex ".*wav\|.*ogg\|.*mp3"` ; do
+    f_basename=`basename $filepath`
+    f_name_wo_extension=${f_basename%%.*}    
+    f_converted="./converted/${f_name_wo_extension}.wav"
+    
+    echo "converting $f_basename"
+    echo "  -> $f_converted"
+    convert_audio_file "$f_basename" "$f_converted"
   done
 }
 
 function main()
 {
   pushd $SCRIPT_DIR
-  mkdir converted
+  mkdir -p converted
 
-  convert_all_wav_files
+  convert_all_audio_files
 
   popd
 }
