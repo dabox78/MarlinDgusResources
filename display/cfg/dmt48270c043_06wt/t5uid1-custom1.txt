@@ -35,7 +35,7 @@
 00000022: 00  .
 00000023: 5a  . 1 music power on: 0x5a to enable 0 otherwise
 00000024: 78  . 1 startup music id 0 otherwise
-00000025: 03  . 1 memory blocks of startup music, 0 to disable
+00000025: 04  . 1 memory blocks of startup music, 0 to disable
 00000026: 32  . 1 volume
 00000027: 00  . 1 do not change (TP_Set_En): 0x5a to enable 0 otherwise
 00000028: 07  . 1 touch pannel mode 

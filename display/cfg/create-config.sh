@@ -7,7 +7,6 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 function compile_configuration()
 {
   filepath="$1"
-  echo "xxx compiling from $1"
   f_basename=`basename $filepath`
   f_name_wo_extension=${f_basename%%.*}    
   f_compiled="./${f_name_wo_extension}.cfg"
