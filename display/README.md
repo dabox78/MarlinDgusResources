@@ -33,6 +33,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * background images shall be 24bit bmp
 * background images do not support transparency
 * icons shall be 8 bit but do support transparency (use the gimp export script)
+* button effect can only be a page's background image, nothing on that page (icons, drawables) are rendered
 * button "click" visual feedback:
   * The static background image solution (con: if an icon shall chnge place, the images need to be re-drawn and converted to bmp):
     1. Overlay a "Basic Touch Control" on the area where the icon is drawn

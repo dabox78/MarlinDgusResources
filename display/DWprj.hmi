@@ -3,7 +3,7 @@ VARCount=64
 PICFIX=1
 SCREENDSIZE=480X272
 SPADDRESS=5000
-Version=0
+Version=-1
 [IMG]
 000=000-boot-screen.bmp
 010=010-main.bmp
