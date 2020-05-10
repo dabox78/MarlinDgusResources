@@ -2,10 +2,11 @@
 
 ## Configuration
 
-| Config             | Notes                                |
-| ------------------ | ------------------------------------ |
-| T5UID1-orig.cfg    | default settings                     |
-| T5UID1-custom1.cfg | 120ms display delay, bg standby 600s |
+| Config                  | Notes                                                     |
+| ----------------------- | --------------------------------------------------------- |
+| t5uid1-orig.cfg         | default settings                                          |
+| t5uid1-custom1.cfg      | display sleep delay enabled, bood and touch sound enabled |
+| t5uid1-format-flash.cfg | normal config + formats the flash                         |
 
 * see also 5 Hardware Configuration File section in https://github.com/juliandroid/DWIN_CR_10s_Pro/blob/master/tools/T5UID1%20Application%20Guide.pdf
 
