@@ -6,12 +6,12 @@ This is WIP, maybe here you will find more information: https://github.com/Marli
 ## Quick Start
 1. run build.sh: this will prepare (export, convert, create) almost all material (.wav, .bmp, .cfg) in this repository
 2. start DGUS Tool
-  1. load project
-  2. click Generate
+   1. load project
+   2. click Generate
 3. flash DGUS display
-  1. store the complete DWIN_SET folder onto a CF card
-  2. insert the CF into the DGUS reader
-  3. boot DGIUS display: it will show a blue screen and the upload process
+   1. store the complete DWIN_SET folder onto a CF card
+   2. insert the CF into the DGUS reader
+   3. boot DGIUS display: it will show a blue screen and the upload process
 
 ## Notes
 
