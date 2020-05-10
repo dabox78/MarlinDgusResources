@@ -14,20 +14,20 @@
 0000000d: 08  . 1 backlitght intensity when idle
 0000000e: ea  . 2 backlight timeout ms (high byte)
 0000000f: 60  .
-00000010: 00  . 1 do not touch (LCD configuration)
+00000010: 00  . 2 do not touch (LCD configuration, set to 0x5aa5 to consider config values of 0x12-0x1f)
 00000011: 00  .
 00000012: 00  . 1 data lactch phase: falling (0) vs rising (1) edge
-00000013: 0d  . 1 pixel clock frequency 500/(*0x13)MHz
-00000014: 1e  . 1 H_W
-00000015: 10  . 1 H_S
+00000013: 30  . 1 pixel clock frequency 500/(*0x13)MHz
+00000014: 29  . 1 H_W
+00000015: 02  . 1 H_S
 00000016: 01  . 2 H_D horizontal display resolution (0x0320 = 800, 0x01e0 = 480)
 00000017: e0  .
-00000018: d2  . 1 H_E
-00000019: 03  . 1 V_W
-0000001a: 14  . 1 V_S
+00000018: 02  . 1 H_E
+00000019: 0a  . 1 V_W
+0000001a: 02  . 1 V_S
 0000001b: 01  . 2 V_D vertical display resolution (0x0258 = 600; 0x0110 = 272)
 0000001c: 10  .
-0000001d: 0c  . 1 V_E
+0000001d: 02  . 1 V_E
 0000001e: 00  . 1 do not touch (TCON_SEL)
 0000001f: 00  . 1 reserved
 00000020: 5a  . 1 picture power on enable: 0x5a to enable 0 otherwise
@@ -35,8 +35,8 @@
 00000022: 00  .
 00000023: 5a  . 1 music power on: 0x5a to enable 0 otherwise
 00000024: 78  . 1 startup music id 0 otherwise
-00000025: 01  . 1 memory blocks of startup music, 0 to disable
-00000026: ff  . 1 volume
+00000025: 03  . 1 memory blocks of startup music, 0 to disable
+00000026: 32  . 1 volume
 00000027: 00  . 1 do not change (TP_Set_En): 0x5a to enable 0 otherwise
 00000028: 07  . 1 touch pannel mode 
 00000029: 14  . 1 touch sensitivity: 0 lowest, 0xff highest, 0x14 default
