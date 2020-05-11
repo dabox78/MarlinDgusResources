@@ -4,8 +4,8 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 function main()
 {
   pushd "$SCRIPT_DIR"
-  mkdir -p "configs-bin"
-  pushd "$SCRIPT_DIR/configs-bin"
+  mkdir -p "generated"
+  pushd "$SCRIPT_DIR/generated"
 
   source $SCRIPT_DIR/create-configs.cfg
   for txt_config in "${DGUS_HUMAN_READABLE_CONFIGURATIONS[@]}" ; do
