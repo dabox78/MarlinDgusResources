@@ -1,12 +1,3 @@
-# Sources
-
-* License
-  This font has been released into the public domain by its author, Barry Schwartz.
-  This applies worldwide.
-  In some countries this may not be legally possible; if so:
-  Barry Schwartz grants anyone the right to use this work for any purpose, without any conditions, unless such conditions are required by law.
-* Link: NA 
-
 # Notes
 
 1. convert otf to ttf
@@ -15,7 +6,7 @@
     1. load font
     2. set scale/shift parameters (modify shift parameters as less as possible)
     3. create (0_DWIN_ASC.HZK)
-    4. copy font to DWIN_SET
+    4. save .HZK font to the corresponding font folder ./xxx
 
 * Examples
   * Free font Prociono: unfortunately has some issues with padding and renders optically less performant on the screen
