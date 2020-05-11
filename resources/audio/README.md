@@ -6,7 +6,7 @@ Use the covnert.sh script (ffmpeg) to convert your files.
 ```
 ./convert.sh
 ```
-The converted files can be found in the ./converted/ folder.
+The converted files can be found in the ./generated/ folder.
 
 Notes:
 * The display will most likely also play 44kHz, 16bit 2 channels but with poor quality.

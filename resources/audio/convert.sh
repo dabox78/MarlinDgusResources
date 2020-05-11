@@ -16,7 +16,7 @@ function convert_all_audio_files()
   for filepath in `find . -maxdepth 1 -regex ".*wav\|.*ogg\|.*mp3"` ; do
     f_basename=`basename $filepath`
     f_name_wo_extension=${f_basename%%.*}    
-    f_converted="./converted/${f_name_wo_extension}.wav"
+    f_converted="./generated/${f_name_wo_extension}.wav"
     
     echo "converting $f_basename"
     echo "  -> $f_converted"
@@ -26,11 +26,9 @@ function convert_all_audio_files()
 
 function main()
 {
-  pushd $SCRIPT_DIR
-  mkdir -p converted
-
+  pushd "$SCRIPT_DIR"
+  mkdir -p "generated"
   convert_all_audio_files
-
   popd
 }
 
