@@ -7,12 +7,9 @@ function export_file_groups_to_bmp()
   gimp "$1" -i -b - < ../export.sch
 }
 
-# $1 ... folder containing .xcf files
+
 function export_all_file_groups_to_bmp()
 {
-  #let folder="$1"
-  #for f in `find .` ; do  export_file_groups_to_bmp $folder ; done
-
   source $SCRIPT_DIR/export.cfg
   for f in "${XCF_FILES_TO_EXPORT_FROM[@]}" ; do
     echo "exporting groups from $f ..."
@@ -23,7 +20,7 @@ function export_all_file_groups_to_bmp()
 
 function convert_all_exported_files()
 {
-  # convert groups to 8 bit
+  # convert groups
   for f in `find . -name "*.bmp" -maxdepth 1` ; do
     echo "converting $f to 8 bit"
     convert $f -type truecolor $f
@@ -34,8 +31,8 @@ function convert_all_exported_files()
 function main()
 {
   pushd "$SCRIPT_DIR"
-  mkdir export
-  pushd "$SCRIPT_DIR/export"
+  mkdir "generated"
+  pushd "$SCRIPT_DIR/generated"
   
   export_all_file_groups_to_bmp "../"
   convert_all_exported_files
