@@ -27,13 +27,14 @@ function convert_all_exported_files()
     echo "done"
   done
 }
-
+  
 function main()
 {
   pushd "$SCRIPT_DIR"
-  mkdir "generated"
+  rm -df "generated"
+  mkdir -p "generated"
   pushd "$SCRIPT_DIR/generated"
-  
+
   export_all_file_groups_to_bmp "../"
   convert_all_exported_files
   
