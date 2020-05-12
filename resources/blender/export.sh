@@ -31,7 +31,7 @@ function convert_all_ressources()
 function main()
 {
   pushd "$SCRIPT_DIR"
-  rm -df "generated"
+  rm -drf "generated"
   mkdir -p "generated"
   pushd "$SCRIPT_DIR/generated"
   
