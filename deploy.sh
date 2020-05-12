@@ -5,9 +5,9 @@ source $SCRIPT_DIR/config.cfg
 
 function copy_ressources()
 {
-  for ressource in "${!RESOURCES[@]}" ; do
-    from="$ressource"
-    to="${RESOURCES[$ressource]}"
+  for idx in ${!RESOURCES_FROM[*]} ; do
+    from="${RESOURCES_FROM[$idx]}"
+    to="${RESOURCES_TO[$idx]}"
     echo "deploy $from"
     echo "  -> $to"
     cp -f $from $to
