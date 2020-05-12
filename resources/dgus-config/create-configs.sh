@@ -4,6 +4,7 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 function main()
 {
   pushd "$SCRIPT_DIR"
+  rm -df "generated"
   mkdir -p "generated"
   pushd "$SCRIPT_DIR/generated"
 
