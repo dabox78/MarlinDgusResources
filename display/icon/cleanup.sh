@@ -7,7 +7,7 @@ function cleanup()
 {
   source cleanup.cfg
   for f in "${FOLDERS_TO_CLEAR[@]}" ; do
-    rm -d $f
+    rm -df $f
     mkdir -p $f
   done
 }
