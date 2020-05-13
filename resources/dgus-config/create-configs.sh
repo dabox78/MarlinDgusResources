@@ -3,7 +3,7 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 function main()
 {
-  echo "\nCompile .txt configuration files -> `pwd`/generated"
+  echo -e "\nCompile .txt configuration files -> `pwd`/generated"
   pushd "$SCRIPT_DIR" > /dev/null
   rm -drf "generated"
   mkdir -p "generated"

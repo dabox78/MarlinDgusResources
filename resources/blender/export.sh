@@ -30,7 +30,7 @@ function convert_all_ressources()
 
 function main()
 {
-  echo "\nConvert .bmp files -> `pwd`/generated"
+  echo -e "\nConvert .bmp files -> `pwd`/generated"
   pushd "$SCRIPT_DIR" > /dev/null
   rm -drf "generated"
   mkdir -p "generated"

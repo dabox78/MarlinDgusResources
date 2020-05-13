@@ -26,7 +26,7 @@ function convert_all_audio_files()
 
 function main()
 {
-  echo "\nConvert audio files -> `pwd`/generated"
+  echo -e "\nConvert audio files -> `pwd`/generated"
   pushd "$SCRIPT_DIR" > /dev/null
   rm -drf "generated"
   mkdir -p "generated"

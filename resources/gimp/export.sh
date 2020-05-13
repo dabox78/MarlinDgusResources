@@ -22,15 +22,14 @@ function convert_all_exported_files()
 {
   # convert groups
   for f in `find . -maxdepth 1 -name "*.bmp"` ; do
-    echo "converting $f to 8 bit"
+    echo "convert $f to 8 bit"
     convert $f -type truecolor $f
-    echo "done"
   done
 }
   
 function main()
 {
-  echo "\nExport from .xcf -> `pwd`/generated"
+  echo -e "\nExport from .xcf -> `pwd`/generated"
   pushd "$SCRIPT_DIR" > /dev/null
   rm -drf "generated"
   mkdir -p "generated"

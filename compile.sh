@@ -8,13 +8,12 @@ function run_tasks()
   for task in "${TASKS[@]}" ; do
     echo "running $task"
     $task
-    echo -en "\n\n"
   done
 }
 
 function main()
 {
-  echo "\nCompile ressources ..."
+  echo -e "\nCompile ressources ..."
   pushd "$SCRIPT_DIR" > /dev/null
   run_tasks
   popd > /dev/null

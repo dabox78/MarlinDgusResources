@@ -16,7 +16,7 @@ function copy_ressources()
 
 function main()
 {
-  echo "\nDeploy ressources ..."
+  echo -e "\nDeploy ressources ..."
   pushd "$SCRIPT_DIR" > /dev/null
   copy_ressources
   popd > /dev/null

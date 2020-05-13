@@ -7,6 +7,7 @@ function cleanup()
 {
   source cleanup.cfg
   for f in "${FOLDERS_TO_CLEAR[@]}" ; do
+    echo "clear $f"
     rm -drf $f
     mkdir -p $f
   done
@@ -15,9 +16,10 @@ function cleanup()
 
 function main()
 {
-  pushd $SCRIPT_DIR
+  echo -e "\nCleanup ..."
+  pushd $SCRIPT_DIR >/dev/null
   cleanup
-  popd
+  popd > /dev/null
 }
 
 main
