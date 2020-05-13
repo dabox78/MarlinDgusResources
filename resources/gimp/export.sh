@@ -21,7 +21,7 @@ function export_all_file_groups_to_bmp()
 function convert_all_exported_files()
 {
   # convert groups
-  for f in `find . -name "*.bmp" -maxdepth 1` ; do
+  for f in `find . -maxdepth 1 -name "*.bmp"` ; do
     echo "converting $f to 8 bit"
     convert $f -type truecolor $f
     echo "done"
@@ -30,16 +30,17 @@ function convert_all_exported_files()
   
 function main()
 {
-  pushd "$SCRIPT_DIR"
+  echo "\nExport from .xcf -> `pwd`/generated"
+  pushd "$SCRIPT_DIR" > /dev/null
   rm -drf "generated"
   mkdir -p "generated"
-  pushd "$SCRIPT_DIR/generated"
+  pushd "$SCRIPT_DIR/generated" > /dev/null
 
   export_all_file_groups_to_bmp "../"
   convert_all_exported_files
   
-  popd
-  popd
+  popd > /dev/null
+  popd > /dev/null
 }
 
 main

@@ -1,7 +1,7 @@
 #!/bin/bash
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-source $SCRIPT_DIR/config.cfg
+source $SCRIPT_DIR/build.cfg
 
 function copy_ressources()
 {
@@ -16,9 +16,10 @@ function copy_ressources()
 
 function main()
 {
-  pushd "$SCRIPT_DIR"
+  echo "\nDeploy ressources ..."
+  pushd "$SCRIPT_DIR" > /dev/null
   copy_ressources
-  popd
+  popd > /dev/null
 }
 
 main

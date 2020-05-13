@@ -1,7 +1,7 @@
 #!/bin/bash
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-source $SCRIPT_DIR/config.cfg
+source $SCRIPT_DIR/build.cfg
 
 function run_tasks()
 {
@@ -14,9 +14,10 @@ function run_tasks()
 
 function main()
 {
-  pushd "$SCRIPT_DIR"
+  echo "\nCompile ressources ..."
+  pushd "$SCRIPT_DIR" > /dev/null
   run_tasks
-  popd
+  popd > /dev/null
 }
 
 main

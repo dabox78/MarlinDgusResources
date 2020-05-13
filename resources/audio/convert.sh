@@ -26,11 +26,12 @@ function convert_all_audio_files()
 
 function main()
 {
-  pushd "$SCRIPT_DIR"
+  echo "\nConvert audio files -> `pwd`/generated"
+  pushd "$SCRIPT_DIR" > /dev/null
   rm -drf "generated"
   mkdir -p "generated"
   convert_all_audio_files
-  popd
+  popd > /dev/null
 }
 
 main

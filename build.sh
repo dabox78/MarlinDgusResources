@@ -3,12 +3,11 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 function main()
 {
-  pushd "$SCRIPT_DIR"
-
+  echo "\nBuild resources ..."
+  pushd "$SCRIPT_DIR"  > /dev/null
   ./compile.sh
   ./deploy.sh
-
-  popd
+  popd > /dev/null
 }
 
 main
