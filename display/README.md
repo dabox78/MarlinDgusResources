@@ -74,8 +74,8 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * the ID specifies the place in flash where it is stored (see t5l_dgusII.pdf, p12, sec.3.2.1 Flash Space)
 * IDs must be manually modified to resolve conflicting overlaps if files are too large (and occupy more than one block)
 * not every file can be placed everywhere, for example:
-  * button click audio effect must be in the front space, whereas boot sound doesn't matter where it is stored
-  * 0-font .hzk file must be at 000; ofthen the boot screen is also placed at 000 and should be moved out of the way
+  * button click audio effect must be in the front space (ID < 64), whereas boot sound doesn't matter where it is stored
+  * 0-font .hzk file must be at ID 0; ofthen the boot screen is also placed at ID 0 and should be moved out of the way
 
 ### Page Background
 * background images of pages shall be 24bit bmp
