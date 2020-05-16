@@ -72,7 +72,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 ### Issues with DGUS Software
 * V7.xxx starts in Chineese, lots of *??* are visible: Go to the right-most menu, select language English.
 * UI Components and groups are not completely visible: 
-  * Set audio effect of touch field "Audio ID" (some versions call it "Voice ID"): The "Audio ID" setting and "number segments" to play are not visible. Set the OS resolution to to 72dpi (issue has been reported). This makes at least the Audio ID visible. Number segments defaults to 1, which may be fine for most applications.
+  * Set audio effect of touch field "Audio ID" (some versions call it "Voice ID"): The "Audio ID" setting and "number segments" to play are not visible. Set the OS resolution to 72dpi (issue has been reported). This makes at least the Audio ID visible. Number segments defaults to 1, which may be fine for most applications.
   * "set resolution" window size must be enlarged to see all UI elements
 
 ### Files
