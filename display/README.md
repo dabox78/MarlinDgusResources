@@ -69,6 +69,12 @@ The software seems flaky and sometimes not that intuitive.
 Working with that circumstances can be exhausting and become frustrating.
 To save you some time here are my two cents (see also https://github.com/juliandroid/DWIN_CR_10s_Pro/):
 
+### Issues with DGUS Software
+* V7.xxx starts in Chineese, lots of *??* are visible: Go to the right-most menu, select language English.
+* UI Components and groups are not completely visible: 
+  * set audio effect of touch field: The "Audio ID" setting and "number segments" are not visible. Set system resolution to to 72dpi (issue has been reported). This makes at least the Audio ID visible. Number segments defaults to 1, which may be fine for most applications.
+  * set resolution window must be resized to see all UI elements
+
 ### Files
 * files must be prefixed with an ID, prefer 0-padded three digit numbers
 * the ID specifies the place in flash where it is stored (see t5l_dgusII.pdf, p12, sec.3.2.1 Flash Space)
