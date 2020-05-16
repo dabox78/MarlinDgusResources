@@ -32,7 +32,7 @@
 0000001f: 00  . 1 reserved
 00000020: 5a  . 1 picture power on enable: 0x5a to enable 0 otherwise
 00000021: 00  . 2 picture power on: page id when power on
-00000022: 00  .
+00000022: 0b  .
 00000023: 5a  . 1 music power on: 0x5a to enable 0 otherwise
 00000024: 7f  . 1 startup music id 0 otherwise
 00000025: 04  . 1 memory blocks of startup music, 0 to disable
