@@ -5,16 +5,16 @@ For the tooling we use vim and xxd.
 ## View Configuration
 Extract hex dump from configuration:
 ```
-./hexdump t5uid1.cfg
+./hexdump ./dmt48270c043_06wt/t5uid1.cfg
 ```
 
 ## Edit Configuration in Place
 Extract hex dump from configuration in vim using the xxd tool.
-After the file is modified it must be manually converted to binary by the vim command "%!xxd -c 1 -r".
-Only then the file can be saved. Otherwise the human readable hex dump is written to the configuration.
+After the file is modified it must be manually converted to binary by the vim command `"%!xxd -c 1 -r"`.
+Only then the file must be saved. Otherwise the human readable hex dump is written to the configuration.
 ```
-./hexedit t5uid1.cfg
-remember to execute vom command before saving changes: %!xxd -c 1 -r
+./hexedit ./dmt48270c043_06wt/t5uid1.cfg
+remember to execute vim command "%!xxd -c 1 -r" before saving changes
 ```
 
 ## Extract Configuration to .txt
