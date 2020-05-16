@@ -31,7 +31,7 @@ for example:
 2. ./build.sh: this will prepare (export, convert, create) almost all material (.wav, .bmp, .cfg) except icon files, \*.bin files and DWprj.hmi
 3. start DGUS Tool
    1. load project
-   3. optinal: make nodifiactions
+   3. optinal: make modifiactions
    4. click Generate to create \*.bin files
    5. optional: if icon resources were modified export them with the DWIN ICO generator from the `./display/icon/nnn-xyz.ico/` folder to the `./DWIN_SET/nnn-xyz.ico` file
 4. flash DGUS display
@@ -41,6 +41,11 @@ for example:
    ```
    2. insert the CF into the DGUS reader (it can be both: turned on or off, I prefer on): if turned on, it will immediately show a blue screen and the upload process
    3. reboot DGUS display
+
+Step 3 (DGUS Tool) is not mandatory if bmp/wav files were replaced. It is only needed if
+* icons' ID (order) have been modified,
+* icons were added, 
+* icon/wav file IDs were modified, etc...
 
 # UI Design software
 
