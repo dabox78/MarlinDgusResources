@@ -84,6 +84,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * not every file can be placed everywhere, for example:
   * button click audio effect must be in the front space (ID < 64), whereas boot sound doesn't matter where it is stored
   * 0-font .hzk file must be at ID 0; ofthen the boot screen is also placed at ID 0 and should be moved out of the way
+* CAUTION, TODO: The documentation (see t5l_dgusII.pdf, p12, sec.3.2.1 Flash Space) states the block size is 256Kb which is contradicting many DGUS projects (also this) that place 392KB background images with sequential IDs. In that regard this is a clear "I don't know what I am doing" case. Am happy about any feedback w.r.t. to this circumstance.
 
 ### Page Background
 * background images of pages shall be 24bit bmp
@@ -95,7 +96,6 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * do support transparency (use the gimp export script)
   * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
 * prefix exported icons with an unique uint8 three digit number, if values above 2^8 are used icons are rendered black (either bug or not documented)
-* CAUTION, TODO: documentation states the sector size is 256Kb which is contradictiong many DGUS projects that place 392KB images with sequential IDs
 
 ### Buttons and Effects
 I fiddled long enough around with the limited functionality and found that buttons shall be better realized with icons from .ico files,
