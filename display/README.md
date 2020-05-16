@@ -35,12 +35,12 @@ for example:
    4. click Generate to create \*.bin files
    5. optional: if icon resources were modified export them with the DWIN ICO generator from the `./display/icon/nnn-xyz.ico/` folder to the `./DWIN_SET/nnn-xyz.ico` file
 4. flash DGUS display
-   1. store the complete DWIN_SET folder onto a CF card; since you will most likely do this many times use sth. as follows (Ubuntu):
- ```
+   1. store the complete DWIN_SET folder onto a CF card; since you will most likely do this many times use sth. as follows (Ubuntu): 
+   ```
    ls /media/$USER/<media-id>/ && cp -dprf ./display/DWIN_SET /media/$USER/<media-id>/ && umount /media/$USER/<media-id> && sync && ll /media/$USER/
- ```
+   ```
    2. insert the CF into the DGUS reader (it can be both: turned on or off, I prefer on): if turned on, it will immediately show a blue screen and the upload process
-   4. reboot DGUS display
+   3. reboot DGUS display
 
 # UI Design software
 
@@ -54,10 +54,10 @@ for example:
 1. install/extract DGUS_Setup_vXYZ
 2. run DGUS_VXYZ
 3. open project file: DWprj.hmi
-  1. load font file (only if v5.1, later loads font automatically)
-  2. do your modifications
-  3. save
-  4. press Generate to create .bin files
+   1. load font file (only if v5.1, later loads font automatically)
+   2. do your modifications
+   3. save
+   4. press Generate to create .bin files
 4. copy DWIN_SET to CF (dos, FAT32) and boot display with CF inserted
 
 ## Personal Notes on the DGUS Product
@@ -85,7 +85,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 ### Icons
 * icons shall be 8 bit colour depth bmp
 * do support transparency (use the gimp export script)
-   * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
+  * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
 * prefix exported icons with an unique uint8 three digit number, if values above 2^8 are used icons are rendered black (either bug or not documented)
 * CAUTION, TODO: documentation states the sector size is 256Kb which is contradictiong many DGUS projects that place 392KB images with sequential IDs
 
@@ -104,13 +104,13 @@ Of course having both effects would be nicer.
   With this approach icons can be moved any time around without the need to modify background images.
   It works as follows: An icon is added with two images that can be toggled.
   The image is then toggled by the "Status sync-returned" touch control
-    1. create an icon button (Variable Icon), minimum and maximum ID correspond to released/pressed icons' ID
-    2. create "Status sync-returned" touch control above the button icon with following values set
-      * TP_ON_MODE: mode 0x01, Data LEN 1, VP1S is the source to write to target VP1T
-      * TP_ON_CONTINUE_MODE: don't care
-      * TP_OFF_MODE: mode 0x01, Data LEN 1, VP3S is the source to write to target VP3T
-      * disable button effect (set to -1)
-      * on a hidden screen create drawables or whatever allows to define and initialize constant values that can be assigned (VPxS) to the variable icon (VPxT) when pressed/releasaed
+  1. create an icon button (Variable Icon), minimum and maximum ID correspond to released/pressed icons' ID
+  2. create "Status sync-returned" touch control above the button icon with following values set
+  * TP_ON_MODE: mode 0x01, Data LEN 1, VP1S is the source to write to target VP1T
+     * TP_ON_CONTINUE_MODE: don't care
+     * TP_OFF_MODE: mode 0x01, Data LEN 1, VP3S is the source to write to target VP3T
+     * disable button effect (set to -1)
+     * on a hidden screen create drawables or whatever allows to define and initialize constant values that can be assigned (VPxS) to the variable icon (VPxT) when pressed/releasaed
 
 # Documentation and Software Sources
 
