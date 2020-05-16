@@ -12,7 +12,7 @@ Notes:
 * The display will most likely also play 44kHz, 16bit 2 channels but with poor quality.
 * In some cases it may be necessary to strip off all meta data from the .wav file (convert.sh does it automatically).
 * Button effect sound ID must be lower than 64. Boot sound placement doesn't matter.
-* When replacing files, check the sound block length in ../../display/cfg/xxx/*.txt (value of address 0x25) vs exported file size.
+* When replacing files, check the sound block length defined in the configuration `../../display/cfg/xxx/*.txt` (value of address 0x25) vs exported file size.
 
 # Sources
 
