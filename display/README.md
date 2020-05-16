@@ -1,51 +1,124 @@
+# Developer Guide
+
+Several scripts allows to auto generate almost all needed material so that it fits the format exaclty as the DGUS display requires it.
+Unfortunately not step can be auto generated with scripts but must be done by manually by hand using the DGUS tools on windows
+for example:
+
+* create .hzk font file,
+* create icon file,
+* create display configuration `13TouchFile.bin, 14ShowFuile.bin` and `22_Config.bin`.
+
+## Scripts
+
+| File        | Notes                                            |
+| ----------- | ------------------------------------------------ |
+| compile.sh  | auto generates files out of .xcf/.wav/.txt files |
+| deploy.sh   | copies generated files to DWIN_SET folder        |
+| build.sh    | compiles and deploys all together                |
+| config.cfg  | configuration of compile.sh and deploy.sh        |
+
+## Other Resources
+
+| File/Folder         | Notes                                                   |
+| ------------------- | ------------------------------------------------------- |
+| ./display/DWIN_SET  | Final folder to upload to the device                    |
+| ./display/DWprj.hmi | DGUS proect, can be opened with DGUS_V7377              |
+| ./ressources/*      | Material (images, audio, icons, hwardware config., etc) |
+
+## Workflow
+
+1. modify files in ./resources/ as you wish
+2. ./build.sh: this will prepare (export, convert, create) almost all material (.wav, .bmp, .cfg) except icon files, \*.bin files and DWprj.hmi
+3. start DGUS Tool
+   1. load project
+   3. optinal: make nodifiactions
+   4. click Generate to create \*.bin files
+   5. optional: if icon resources were modified export them with the DWIN ICO generator from the `./display/icon/nnn-xyz.ico/` folder to the `./DWIN_SET/nnn-xyz.ico` file
+4. flash DGUS display
+   1. store the complete DWIN_SET folder onto a CF card; since you will most likely do this many times use sth. as follows (Ubuntu):
+ ```
+   ls /media/$USER/<media-id>/ && cp -dprf ./display/DWIN_SET /media/$USER/<media-id>/ && umount /media/$USER/<media-id> && sync && ll /media/$USER/
+ ```
+   2. insert the CF into the DGUS reader (it can be both: turned on or off, I prefer on): if turned on, it will immediately show a blue screen and the upload process
+   4. reboot DGUS display
+
 # UI Design software
 
 * The software used to design the UI is
-  * DGUS_Setup_v5.1 (preferred, http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS)
-  * DGUS_V73XX http://www.dwin.com.cn/service/en/file/id/13
+  * DGUS_Setup_v5.1 (http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS)
+  * DGUS_V73XX (http://www.dwin.com.cn/service/en/file/id/13), or 
+  * preferred DGUS_V7388 (http://www.dwin.com.cn/service/en/file/id/13)
 
-# Project Startup Howto
+## UI Project Startup Howto
 
-1. install DGUS_Setup_vX.Y.exe from http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS
-2. run DGUS_VX.Y
+1. install/extract DGUS_Setup_vXYZ
+2. run DGUS_VXYZ
 3. open project file: DWprj.hmi
-  1. load font file (only if DGUS_Setup_v5.1 is used)
-  2. do your edits
+  1. load font file (only if v5.1, later loads font automatically)
+  2. do your modifications
   3. save
-  4. generate configuration files
-4. copy DWIN_SET to CF (dos, FAT32) and boot display with CF
+  4. press Generate to create .bin files
+4. copy DWIN_SET to CF (dos, FAT32) and boot display with CF inserted
 
+## Personal Notes on the DGUS Product
 
-# Materials
-* investigation ohers made with DGUS https://github.com/juliandroid/DWIN_CR_10s_Pro/
-* documentation (PDF) delivered with DGUS_Setup_vX.Y.exe
-  * DGUSVX.Y.pdf 
-* videos provided on http://www.ampdisplay.com/download1.php
-* stack pointer (SP) and variable pointer (VP) documentation https://cdn.papouch.com/data/user-content/old_eshop/files/DIS_DMT48270T043_3WT/dgus-command-demonstration.pdf
-* http://www.dwin.com.cn/service/en/file/id/13
-  * T5L_DGUSII Application Development Guide
-  * DMT48270C043_06W_DATASHEET.pdf
-  * Kernel Update of T5 CPU Smart LCM
+Be patient!
+The documentation, if available, is sparse and not very accurate.
+Translated documents are sometimes misleading, outdated or incorrect.
+The software seems flaky and sometimes not that intuitive.
+Working with that circumstances can be exhausting and become frustrating.
+To save you some time here are my two cents (see also https://github.com/juliandroid/DWIN_CR_10s_Pro/):
 
-# Notes on DWIN DGUS Display Configuration Software
-Unfortunately documentation and software lack of quality/usability and working with that is very exhausting and frustrating.
-To save you some time here are my two cents (see also https://github.com/juliandroid/DWIN_CR_10s_Pro/)
-* background images shall be 24bit bmp
+### Files
+* files must be prefixed with an ID, prefer 0-padded three digit numbers
+* the ID specifies the place in flash where it is stored (see t5l_dgusII.pdf, p12, sec.3.2.1 Flash Space)
+* IDs must be manually modified to resolve conflicting overlaps if files are too large (and occupy more than one block)
+* not every file can be placed everywhere, for example:
+  * button click audio effect must be in the front space, whereas boot sound doesn't matter where it is stored
+  * 0-font .hzk file must be at 000; ofthen the boot screen is also placed at 000 and should be moved out of the way
+
+### Page Background
+* background images of pages shall be 24bit bmp
 * background images do not support transparency
-* icons shall be 8 bit but do support transparency (use the gimp export script)
-* button effect can only be a page's background image, nothing on that page (icons, drawables) are rendered
-* button "click" visual feedback:
-  * The static background image solution (con: if an icon shall chnge place, the images need to be re-drawn and converted to bmp):
-    1. Overlay a "Basic Touch Control" on the area where the icon is drawn
-    2. add Button Effect and choose 2nd image with the button effect
-  * The more fexible solution with dynamic icons (con: more sophisticated; works only with simple buttons, incremental adjustment):
-    With this approach icons can be moved any time around without the need to modify the background images.
-    It works as follows: An icon is created with two images that can be toggled. The image is then toggled by the
-    "Status sync-returned" touch control
-    1. create an icon button (Variable Icon), minimum and maximum correspond to released/pressed icons
-    2. create "Status sync-returned" touch control above the button
+* background image must match the exact screen size
+
+### Icons
+* icons shall be 8 bit colour depth bmp
+* do support transparency (use the gimp export script)
+   * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
+* prefix exported icons with an unique uint8 three digit number, if values above 2^8 are used icons are rendered black (either bug or not documented)
+
+
+### Buttons and Effects
+I fiddled long enough around with the limited functionality and found that buttons shall be better realized with icons from .ico files,
+than by drawing icons on the screen background image.
+This makes modifying screen layouts and exchanging icons much more simpler for the cost of visual button effects.
+A visual button effect is only partially supported for icons and is cumbersome to realize (described later in this section).
+For this reasons this project goes for audio click effect instead of color change effect on button press.
+Of course having both effects would be nicer.
+
+* visual button pressed effect can be an arbitrary page ID but only the page background image will be rendered; no icons/drawables on that page are shown - this is very unfortunate
+  1. Overlay a "Basic Touch Control" on the area where the icon is drawn on the background image
+  2. add Button Effect and choose an other image with the button effect; optimally it is the same image with colours being slightly changed
+* visual button prssed effect realized with icon:
+  With this approach icons can be moved any time around without the need to modify background images.
+  It works as follows: An icon is added with two images that can be toggled.
+  The image is then toggled by the "Status sync-returned" touch control
+    1. create an icon button (Variable Icon), minimum and maximum ID correspond to released/pressed icons' ID
+    2. create "Status sync-returned" touch control above the button icon with following values set
       * TP_ON_MODE: mode 0x01, Data LEN 1, VP1S is the source to write to target VP1T
       * TP_ON_CONTINUE_MODE: don't care
       * TP_OFF_MODE: mode 0x01, Data LEN 1, VP3S is the source to write to target VP3T
       * disable button effect (set to -1)
       * on a hidden screen create drawables or whatever allows to define and initialize constant values that can be assigned (VPxS) to the variable icon (VPxT) when pressed/releasaed
+
+# Documentation and Software Sources
+
+* investigation results ohers made with DGUS: https://github.com/juliandroid/DWIN_CR_10s_Pro/
+* documentation (PDF) is sometimes delivered with DGUS_Setup_vX.Y: DGUSVX.Y.pdf 
+* videos provided on http://www.ampdisplay.com/download1.php
+* stack pointer (SP) and variable pointer (VP) documentation https://cdn.papouch.com/data/user-content/old_eshop/files/DIS_DMT48270T043_3WT/dgus-command-demonstration.pdf
+* search the DWIN software center: http://www.dwin.com.cn/service/en/file/id/13
+  * T5L_DGUSII Application Development Guide
+  * DMT48270C043_06W_DATASHEET.pdf
+  * Kernel Update of T5 CPU Smart LCM
