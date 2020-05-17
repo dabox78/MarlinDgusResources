@@ -42,10 +42,13 @@ for example:
    2. insert the CF into the DGUS reader (it can be both: turned on or off, I prefer on): if turned on, it will immediately show a blue screen and the upload process
    3. reboot DGUS display
 
-Step 3 (DGUS Tool) is not mandatory if bmp/wav files were replaced. It is only needed if
+**Step 3 (DGUS Tool)** is not mandatory if bmp/wav files were replaced. It is only needed if
 * icons' ID (order) have been modified,
 * icons were added, 
 * icon/wav file IDs were modified, etc...
+
+**Step 3.II:**
+Touch input is realized with the "Return Key code" touch control. On touch the device sends to Marlin the requested screen to jump to. Marlin then decides if the switch is allowed and subsequently requests the DGUS device to finally change the screen. The "key value" defines from where to where to switch (high byte from, low byte to). Example: `0x0a0b` would request to jump from screen ID `10` to screen ID `11`. The VP (value pointer) must be `0x2001` as it is expected by Marlin firmware. For this reason do not use "Page Switching" from DGUS software (set to `-1`).
 
 # UI Design software
 
@@ -81,6 +84,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * UI Components and groups are not completely visible: 
   * Audio effect of touch field "Audio ID" (some versions call it "Voice ID"): The "Audio ID" setting and "number segments" to play are not visible. Set the OS resolution to 72dpi (issue has been reported). This makes at least the Audio ID visible. Number segments defaults to 1, which may be fine for most applications.
   * "Set resolution" window size must be enlarged to see all UI elements.
+* `Control + z` ruins all drawable's names of the current page; recommend to not use the "Name" field for the moment
 
 ### Files
 * files must be prefixed with an ID, prefer 0-padded three digit numbers
@@ -90,6 +94,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
   * button click audio effect must be in the front space (ID < 64), whereas boot sound doesn't matter where it is stored
   * 0-font .hzk file must be at ID 0; ofthen the boot screen is also placed at ID 0 and should be moved out of the way
 * CAUTION, TODO: The documentation (see t5l_dgusII.pdf, p12, sec.3.2.1 Flash Space) states the block size is 256Kb which is contradicting many DGUS projects (also this) that place 392KB background images with sequential IDs. In that regard this is a clear "I don't know what I am doing" case. Am happy about any feedback w.r.t. to this circumstance.
+* if you encounter unexpected behaviour consider to format the flash
 
 ### Page Background
 * background images of pages shall be 24bit bmp
@@ -97,6 +102,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * background image must match the exact screen size
 
 ### Icons
+* icon size is solely defined by the image dimension and cannot be scaled with the DGUS software
 * icons shall be 8 bit colour depth bmp
 * do support transparency (use the gimp export script)
   * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
