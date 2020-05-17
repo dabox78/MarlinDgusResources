@@ -90,6 +90,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
   * button click audio effect must be in the front space (ID < 64), whereas boot sound doesn't matter where it is stored
   * 0-font .hzk file must be at ID 0; ofthen the boot screen is also placed at ID 0 and should be moved out of the way
 * CAUTION, TODO: The documentation (see t5l_dgusII.pdf, p12, sec.3.2.1 Flash Space) states the block size is 256Kb which is contradicting many DGUS projects (also this) that place 392KB background images with sequential IDs. In that regard this is a clear "I don't know what I am doing" case. Am happy about any feedback w.r.t. to this circumstance.
+* if you encounter unexpected behaviour consider to format the flash
 
 ### Page Background
 * background images of pages shall be 24bit bmp
@@ -97,6 +98,7 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * background image must match the exact screen size
 
 ### Icons
+* icon size is solely defined by the image dimension and cannot be scaled with the DGUS software
 * icons shall be 8 bit colour depth bmp
 * do support transparency (use the gimp export script)
   * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
