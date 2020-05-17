@@ -107,7 +107,8 @@ To save you some time here are my two cents (see also https://github.com/juliand
 * do support transparency (use the gimp export script)
   * in the GIMP project add the correct background color (no transparency) below the icon so that anti aliasing fades to the correct bg color, otherwise the icon's contour may look coarse-grained
 * prefix exported icons with an unique uint8 three digit number, if values above 2^8 are used icons are rendered black (either bug or not documented)
-* can be rotated with the DGUS software (handy to rotate arrow symbols); values not alligned to `π/2` suffer of aliasing
+* can be rotated with the DGUS software (handy to rotate arrow symbols); values not alligned to `π/2` suffer of serous aliasing
+  * center of the rendered icon is the top-left corner of the rectangle displayed in DGUS software
 
 ### Buttons and Effects
 I fiddled long enough around with the limited functionality and found that buttons shall be better realized with icons from .ico files,
