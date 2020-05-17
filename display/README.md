@@ -48,7 +48,7 @@ for example:
 * icon/wav file IDs were modified, etc...
 
 **Step 3.II:**
-Touch input is realized with the "Return Key code" touch control. On touch the device sends to Marlin the requested screen to jump to. Marlin then decides if the switch is allowed and subsequently requests the DGUS device to finally switch the screen. The "key value" defines from where to where to switch (high byte from, low byte to). Example: `0x0a0b` would request to jump from screen ID 10 to screen ID 11. The VP (value pointer) must be `0x2001` as it is expected by Marlin firmware.
+Touch input is realized with the "Return Key code" touch control. On touch the device sends to Marlin the requested screen to jump to. Marlin then decides if the switch is allowed and subsequently requests the DGUS device to finally change the screen. The "key value" defines from where to where to switch (high byte from, low byte to). Example: `0x0a0b` would request to jump from screen ID `10` to screen ID `11`. The VP (value pointer) must be `0x2001` as it is expected by Marlin firmware. For this reason do not use "Page Switching" from DGUS software (set to `-1`).
 
 # UI Design software
 
