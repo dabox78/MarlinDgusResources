@@ -5,11 +5,13 @@ Insert card and boot the display to initiathe the download to display.
 
 ## Configuration
 
-| Config                  | Notes                                                     |
-| ----------------------- | --------------------------------------------------------- |
-| t5uid1-orig.cfg         | default settings                                          |
-| t5uid1-custom1.cfg      | enabled: bg light sleep delay, bood and touch sound effect; boot screen ID=11 |
-| t5uid1-format-flash.cfg | default settings + formats the flash                      |
+| Config                    | Notes                                                     |
+| ------------------------- | --------------------------------------------------------- |
+| t5uid1-orig.cfg           | default settings                                          |
+| t5uid1-orig-format.cfg    | same as t5uid1-orig.cfg but formats flash                 |
+| t5uid1-custom1.cfg        | enabled: bg light sleep delay, bood and touch sound effect; boot screen ID=11 |
+| t5uid1-custom1-format.cfg | same as t5uid1-custom1.cfg but formats flash              |
+| t5uid1-format-flash.cfg   | default settings + formats the flash                      |
 
 * see also 5 Hardware Configuration File section in https://github.com/juliandroid/DWIN_CR_10s_Pro/blob/master/tools/T5UID1%20Application%20Guide.pdf
 

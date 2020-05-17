@@ -2,8 +2,8 @@
 00000001: 35  5
 00000002: 44  D
 00000003: 31  1
-00000004: 00  . 2 format flash: 0x5aa5 to format NAND 0 otherwise
-00000005: 00  .
+00000004: 5a  . 2 format flash: 0x5aa5 to format NAND 0 otherwise
+00000005: a5  .
 00000006: 00  . 2 system clock calibration
 00000007: 00  .
 00000008: bc  . 1 system configuration 1
