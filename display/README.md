@@ -42,10 +42,13 @@ for example:
    2. insert the CF into the DGUS reader (it can be both: turned on or off, I prefer on): if turned on, it will immediately show a blue screen and the upload process
    3. reboot DGUS display
 
-Step 3 (DGUS Tool) is not mandatory if bmp/wav files were replaced. It is only needed if
+**Step 3 (DGUS Tool)** is not mandatory if bmp/wav files were replaced. It is only needed if
 * icons' ID (order) have been modified,
 * icons were added, 
 * icon/wav file IDs were modified, etc...
+
+**Step 3.II:**
+Touch input is realized with the "Return Key code" touch control. On touch the device sends to Marlin the requested screen to jump to. Marlin then decides if the switch is allowed and subsequently requests the DGUS device to finally switch the screen. The "key value" defines from where to where to switch (high byte from, low byte to). Example: `0x0a0b` would request to jump from screen ID 10 to screen ID 11. The VP (value pointer) must be `0x2001` as it is expected by Marlin firmware.
 
 # UI Design software
 
