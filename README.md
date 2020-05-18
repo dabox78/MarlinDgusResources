@@ -11,7 +11,7 @@ The aim is to make the compiled `DWIN_SET` directory highly configurable so that
 | icons can be dragged any time with the DGUS software           | every screen background must be modified |
 | button effects: audio effect (visual not possible with icons) | button effects: visual effect, every screen needs a 2nd slightly modified screen to overlay the button area when pressed |
 | auto generated material is placed into DWIN_SET by one single script `build.sh`: icons, screen background, audio, DGUS configuation | no auto generation  |
-| auto generation script can be used to create multiple UI flavours of the same project (by configuration file) | - | 
+| auto generating script can be used to create multiple UI flavours of the same project (by configuration file) | - | 
 
 ## Note
 
