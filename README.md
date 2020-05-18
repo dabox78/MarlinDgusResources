@@ -6,7 +6,7 @@ The aim is to make the compiled `DWIN_SET` direcotry highly configurable so that
 ## Note
 * This project is heaviliy WIP.
 * Currently it is tested only with Creality Ender-5 Plus and Marlin 2.0.x.
-* The project relys on minor Marlin [modifications](https://github.com/rubienr/MarlinFirmware/tree/creality-ender-5-plus-personalized) which are not yet in upstream!
+* The project relys on minor Marlin [modifications](https://github.com/rubienr/MarlinFirmware/tree/2.0.x-extui-dgus-origin) which are not yet in upstream!
 * Maybe here you will find more information: 
   * [\[FR\] Make DGUS_LCD_UI_ORIGIN config. coherent to Configuration*.h #18035](https://github.com/MarlinFirmware/Marlin/issues/18035)
   * [\[FR\] Integrate low cost DWIN Touch panel #12096 ](https://github.com/MarlinFirmware/Marlin/issues/12096)
