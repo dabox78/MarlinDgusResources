@@ -13,8 +13,8 @@ The aim is to make the compiled `DWIN_SET` directory highly configurable so that
 | auto generated material is placed into DWIN_SET by one single script `build.sh`: icons, screen background, audio, DGUS configuation | no auto generation  |
 | auto generation script can be used to create multiple UI flavours of the same project (by configuration file) | - | 
 
-
 ## Note
+
 * This project is heaviliy WIP.
 * Currently it is tested only with Creality Ender-5 Plus and Marlin 2.0.x.
 * The project relys on minor Marlin [modifications](https://github.com/rubienr/MarlinFirmware/tree/2.0.x-extui-dgus-origin) which are not yet in upstream!
@@ -28,6 +28,8 @@ The aim is to make the compiled `DWIN_SET` directory highly configurable so that
 2. Insert the cart into the display and turn it on.
 3. This will initiate the download to display.
 4. After the download is finished re-start the display.
+
+Refer also to the [README](./display/DWIN_SET/README.md) in `./display/DWIN_SET`.
 
 # Personalize Display
 
