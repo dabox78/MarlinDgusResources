@@ -53,9 +53,11 @@ Touch input is realized with the "Return Key code" touch control. On touch the d
 # UI Design software
 
 * The software used to design the UI is
-  * DGUS_Setup_v5.1 (http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS)
+  * DGUS_V7388 (http://www.dwin.com.cn/service/en/file/id/13 or http://forum.dwin.com.cn/forum.php?mod=viewthread&tid=1181) (preferred),
   * DGUS_V73XX (http://www.dwin.com.cn/service/en/file/id/13), or 
-  * preferred DGUS_V7388 (http://www.dwin.com.cn/service/en/file/id/13)
+  * DGUS_Setup_v5.1 (http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS)
+  
+  
 
 ## UI Project Startup Howto
 
