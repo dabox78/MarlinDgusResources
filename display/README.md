@@ -68,6 +68,10 @@ Touch input is realized with the "Return Key code" touch control. On touch the d
    4. press Generate to create .bin files
 4. copy DWIN_SET to CF (dos, FAT32) and boot display with CF inserted
 
+Note: Manipulating the DGUS UI usually means the device must be flashed over and over.
+Consider making the display's SD card slot accessible (e.g. [external mount](https://github.com/rubienr/cad/tree/master/ender-5/ender-5-plus-display-mount-external) for Creality Ender-5 Plus).
+
+
 ## Personal Notes on the DGUS Product
 
 Be patient!
