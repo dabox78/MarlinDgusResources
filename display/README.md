@@ -51,13 +51,12 @@ for example:
 Touch input is realized with the "Return Key code" touch control. On touch the device sends to Marlin the requested screen to jump to. Marlin then decides if the switch is allowed and subsequently requests the DGUS device to finally change the screen. The "key value" defines from where to where to switch (high byte from, low byte to). Example: `0x0a0b` would request to jump from screen ID `10` to screen ID `11`. The VP (value pointer) must be `0x2001` as it is expected by Marlin firmware. For this reason do not use "Page Switching" from DGUS software (set to `-1`).
 
 # UI Design software
-
+Refer to repository https://github.com/rubienr/dgus-tools for the needed tools or use the subsequent links: 
 * The software used to design the UI is
   * DGUS_V7388 (http://www.dwin.com.cn/service/en/file/id/13 or http://forum.dwin.com.cn/forum.php?mod=viewthread&tid=1181) (preferred),
   * DGUS_V73XX (http://www.dwin.com.cn/service/en/file/id/13), or 
   * DGUS_Setup_v5.1 (http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS)
-  
-  
+
 
 ## UI Project Startup Howto
 
