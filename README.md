@@ -9,7 +9,7 @@ The aim is to make the compiled `DWIN_SET` directory highly configurable so that
 | ---- | -------- |
 | material is auto generated and placed into `DWIN_SET/` by running one single script `build.sh`: icons, screen background, audio, DGUS configuation | no auto generation  |
 | build script can create multiple UI flavours of the same project       | - | 
-| icons are used to depict anything, screen background is an empty image | every screen needs a dedicated image |
+| icons are used to depict anything, screen background is an empty image <img src="./build-flavours/screenshots-debian-red_dgus-origin_dmt48270c043-06wt/project/010-main-menu.png" width="100"> | every screen needs a dedicated image <img src="./build-flavours/screenshots-debian-red_dgus-origin_dmt48270c043-06wt/devide/010-main-menu.jpg" width="100">|
 | icon placement can be modified any time with the DGUS software         | screen background must be modified |
 | icons/captions/screen bg. be easily replaced at once                   | every single screen background must be modified |
 | button effects: audio effect (visual not possible with icons)          | button effects: visual effect, every screen needs a 2nd slightly modified screen to overlay the button area when pressed |
