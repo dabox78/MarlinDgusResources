@@ -10,24 +10,24 @@ for example:
 
 ## Scripts
 
-| File        | Notes                                            |
-| ----------- | ------------------------------------------------ |
-| compile.sh  | auto generates files out of .xcf/.wav/.txt files |
-| deploy.sh   | copies generated files to DWIN_SET folder        |
-| build.sh    | compiles and deploys all together                |
-| config.cfg  | configuration of compile.sh and deploy.sh        |
+| File                   | Notes                                                              |
+| ---------------------- | ------------------------------------------------------------------ |
+| build.sh               | compile and deploy files (see -h help text)                        |
+| compile.sh             | auto generate files out of .xcf/.wav/.txt files (see -h help text) |
+| deploy.sh              | copy generated files to DWIN_SET folder (see -h help text)         |
+| build-flavours/xxx.cfg | compile and delpoy configurations                                  |
 
 ## Other Resources
 
-| File/Folder         | Notes                                                   |
-| ------------------- | ------------------------------------------------------- |
-| ./display/DWIN_SET  | Final folder to upload to the device                    |
-| ./display/DWprj.hmi | DGUS proect, can be opened with DGUS_V7377              |
-| ./ressources/*      | Material (images, audio, icons, hwardware config., etc) |
+| File/Folder                    | Notes                                                   |
+| ------------------------------ | ------------------------------------------------------- |
+| ${DWIN_PROJECT_BASE}/DWIN_SET  | Final folder to upload to the device                    |
+| ${DWIN_PROJECT_BASE}/DWprj.hmi | DGUS proect, can be opened with DGUS_V7377              |
+| ${RESOURCES_BASE}/*            | Material (images, audio, icons, hwardware config., etc) |
 
 ## Workflow
 
-1. modify files in ./resources/ as you wish
+1. modify files in ${RESOURCES_BASE}/ as you wish
 2. ./build.sh: this will prepare (export, convert, create) almost all material (.wav, .bmp, .cfg) except icon files, \*.bin files and DWprj.hmi
 3. start DGUS Tool
    1. load project
@@ -56,8 +56,6 @@ Touch input is realized with the "Return Key code" touch control. On touch the d
   * DGUS_V7388 (http://www.dwin.com.cn/service/en/file/id/13 or http://forum.dwin.com.cn/forum.php?mod=viewthread&tid=1181) (preferred),
   * DGUS_V73XX (http://www.dwin.com.cn/service/en/file/id/13), or 
   * DGUS_Setup_v5.1 (http://www.ampdisplay.com/download1.php?cat=HMI%20UART(DWIN)&sub_cat=DGUS)
-  
-  
 
 ## UI Project Startup Howto
 
