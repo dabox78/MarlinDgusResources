@@ -1,13 +1,50 @@
 #!/bin/bash
-
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+SCRIPT_NAME=`basename "$0"`
+
+EXPORT_FOLDER_NAME="generated"
+EXPORT_FOLDER_PATH_NAME="$SCRIPT_DIR/$EXPORT_FOLDER_NAME"
+
+
+function read_args()
+{
+  if [ "$#" -eq 0 ] ; then
+    NOARGS=1
+  fi
+  
+  while [[ "$#" -gt 0 ]]; do
+    case $1 in
+      -h|--help) HELP=1 ;;
+      -g|--generate) CONVERT=1 ;;
+      -d|--dryrun) CONVERT=1; DRYRUN=1 ;;
+      -r|--remove) CLEANUP=1 ;;
+      *) echo "$SCRIPT_NAME Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+  done
+}
+
+
+function usage()
+{
+  if [ ! -z "$1" ] ; then
+    echo "$SCRIPT_NAME [ -h | -g | -d | -r ]"
+    echo "   -h, --help            prints this help text"
+    echo "   -g, --generate        run this script (convert)"
+    echo "   -d, --dryrun          same as -g but without touching anything"
+    echo "   -r, --remove          remove artefacts folder ($EXPORT_FOLDER_PATH_NAME)"
+    exit 1
+  fi
+}
 
 
 # $1 ... source filepath relative to script
 # $2 ... destination filepath relative to script
 function convert_audio_file()
 {
+  if [ "x$DRYRUN" != "x1" ] ; then
     ffmpeg -i $1 -acodec pcm_s16le -ac 1 -ar 32000 -fflags +bitexact -y -loglevel 24 $2
+  fi
 }
 
 
@@ -24,14 +61,38 @@ function convert_all_audio_files()
   done
 }
 
+
+function cleanup()
+{
+  echo "Cleaning artefact folder '$EXPORT_FOLDER_NAME'"
+  rm -drf "$EXPORT_FOLDER_NAME"
+  if [ "x$CLEANUP" == "x1" ] ; then
+    exit 0
+  fi
+  mkdir -p "$EXPORT_FOLDER_NAME"
+}
+
+
 function main()
 {
-  echo -e "\nConvert audio files -> `pwd`/generated"
+  read_args "$@"
+  usage $HELP
+
+  if  [ x"$NOARGS" == "x1" ] ; then
+    usage 1
+  fi
+
   pushd "$SCRIPT_DIR" > /dev/null
-  rm -drf "generated"
-  mkdir -p "generated"
+  cleanup $CLEANUP
+
+  if  [ -z "$CONVERT" ] ; then
+    usage 1
+  fi
+
+  echo -e "\nConvert audio files -> $EXPORT_FOLDER_NAME"
   convert_all_audio_files
   popd > /dev/null
 }
 
-main
+
+main "$@"

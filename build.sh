@@ -5,14 +5,18 @@ SCRIPT_NAME=`basename "$0"`
 
 function read_args()
 {
+  if [ "$#" -eq 0 ] ; then
+    NOARGS=1
+  fi
+
   while [[ "$#" -gt 0 ]]; do
     case $1 in
-      -h|--help)    HELP="1" ;;
+      -h|--help) HELP=1 ;;
       -f|--flavour) BUILD_FLAVOUR="$2"; shift ;;
-      -v|--verbose) VERBOSE="1" ;;
-      -d|--dryrun)  DRYRUN="1" ;;
-      -l|--list)    LIST_CONFIGS="1" ;;
-      *) echo "Unknown parameter passed: $1"; exit 1 ;;
+      -d|--dryrun) BUILD_FLAVOUR="$2"; DRYRUN=1; shift ;;
+      -l|--list) LIST_CONFIGS=1 ;;
+      -r|--remove) CLEANUP=1 ;;
+      *) echo "$SCRIPT_NAME Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
   done
@@ -22,13 +26,13 @@ function read_args()
 function usage()
 {
   if [ ! -z "$1" ] ; then
-    echo "$SCRIPT_NAME [ -h | -f <file> | -v | -d ]"
-    echo "   -h, --help            prints this help text"
-    echo "   -f, --flavour <file>  configuration file name (no path)"
-    echo "   -v, --verbose         verbose"
-    echo "   -d, --dryrun          dryrun"
-    echo "   -l, --list            list configurations"
-    exit 0
+    echo "$SCRIPT_NAME [ -h | -f <file.cfg> | -d <file.cfg> | -l | -r ]"
+    echo "   -h, --help                prints this help text"
+    echo "   -f, --flavour <file.cfg>  configuration file name (no path); default: $FLAVOUR_CONFIG"
+    echo "   -d, --dryrun <file.cfg>   same as -f but without touching anyting"
+    echo "   -l, --list                list configurations"
+    echo "   -r, --remove              cleanup artefacts"
+    exit 1
   fi
 }
 
@@ -47,21 +51,33 @@ function list_configurations()
 function main()
 {
   read_args "$@"
-  usage "$HELP"
 
   pushd "$SCRIPT_DIR"  > /dev/null
 
   source ./tools.sh && load_config "$BUILD_FLAVOUR" && list_configurations "$LIST_CONFIGS"
+  usage "$HELP"
 
-  local reason=" ..."
+  local reason=""
+  local compile_args=""
+  local deploy_args=""
   if [ ! -z "$DRYRUN" ] ; then
     reason=" (dry run) ..."
+    compile_args="--dryrun $BUILD_FLAVOUR"
+    deploy_args="--dryrun"
+  elif [ ! -z "$CLEANUP" ] ; then
+    reason=" (cleanup) ..."
+    compile_args="--remove"
+    deploy_args="--remove"
+  else
+    reason=" ..."
+    compile_args="--flavour $BUILD_FLAVOUR"
+    deploy_args="--generate"
   fi
 
   echo -e "\nBuild project $FLAVOUR_CONFIG${reason}\n"
   print_config_info
 
-  ./compile.sh "$@" && ./deploy.sh "$@"
+  ./compile.sh $compile_args && ./deploy.sh "$deploy_args"
 
   popd > /dev/null
 }
