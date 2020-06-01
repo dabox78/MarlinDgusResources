@@ -9,7 +9,7 @@ This project refines the work done by [coldtobi](https://github.com/coldtobi/Mar
 
 | This | Coldtobi |
 | ---- | -------- |
-| material is auto generated and placed into `DWIN_SET/` by running one single command `build.sh`: icons, screen background, audio, DGUS configuation | no scripting |
+| material is auto generated and placed into `DWIN_SET/` by running one single command `build.sh`: <br /> * icons <br /> * captions <br /> * screen backgrounds <br /> * audio effects <br /> * DGUS configuation | no scripting |
 | build script can create multiple UI flavours of the same project                  | - | 
 | icons are used to depict anything, screen background is an empty image <br /> <img src="./build-flavours/screenshots-debian-red_dgus-origin_dmt48270c043-06wt/project/010-main-menu.png" width="100"> | every screen needs a dedicated image <br /> <img src="./build-flavours/screenshots-debian-red_dgus-origin_dmt48270c043-06wt/project/010-main-menu-coldtobi.bmp" width="100">|
 | icon placement can be easily modified any time with the DGUS Tool                 | screen background must be modified |
