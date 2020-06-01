@@ -105,11 +105,11 @@ function copy_project_to_removable_disk()
   local source_path_dwin_set="${1}/${dwin_set}"
   local destination_path=$2
 
-  local usage="\
-  Usage: [ arg1 arg2 ]\n\
-     arg1: source folder containing ./${dwin_set}/ (absolute path)\n\
-     arg2: destination root folder to removable device (absolute path)\n\
-  "
+  #local usage="\
+  #Usage: [ arg1 arg2 ]\n\
+  #   arg1: source folder containing ./${dwin_set}/ (absolute path)\n\
+  #   arg2: destination root folder to removable device (absolute path)\n\
+  #"
 
   if [ ! -d "$source_path" ] ; then
     echo "Failed to locate source directory '$source_path'."
@@ -119,13 +119,13 @@ function copy_project_to_removable_disk()
 
   if [ ! -d "$source_path_dwin_set" ] ; then
     echo "Failed to locate source directory '$source_path_dwin_set'."
-    echo -e $usage
+    #echo -e $usage
     return 1
   fi
   
   if [ ! -d "$destination_path" ] ; then
     echo "Failed to locate removable device root directory '$destination_path'."
-    echo -e $usage
+    #echo -e $usage
     return 1
   fi
 

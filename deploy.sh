@@ -22,7 +22,7 @@ function usage()
   if [ ! -z "$1" ] ; then
     echo "$SCRIPT_NAME [ -h | -f <file> | -d ]"
     echo "   -h, --help            prints this help text"
-    echo "   -f, --flavour <file>  configuration file name (no path)"
+    echo "   -f, --flavour <file>  configuration file name; default: $FLAVOUR_CONFIG"
     echo "   -d, --dryrun <file>   same as -f but without touching anything"
     exit 0
   fi
@@ -52,6 +52,7 @@ function copy_ressources()
 function main()
 {
   read_args "$@"
+  source ./tools.sh  && load_config "$BUILD_FLAVOUR" && flavour_config_deploy_sanity_check
   usage "$HELP"
 
   local run_mode=""
@@ -67,8 +68,7 @@ function main()
 
   echo -e "\nDeploy ressources${run_mode} ..."
   pushd "$SCRIPT_DIR" > /dev/null
-  source ./tools.sh  && load_config "$BUILD_FLAVOUR" && flavour_config_deploy_sanity_check && copy_ressources\
-  && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
+  copy_ressources && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
   popd > /dev/null
 }
 

@@ -29,11 +29,11 @@ function usage()
   if [ ! -z "$1" ] ; then
     echo "$SCRIPT_NAME [ -h | -f <file.cfg> | -d <file.cfg> | -l | -r | -s ]"
     echo "   -h, --help                print this help text"
-    echo "   -f, --flavour <file.cfg>  configuration file name (no path); default: $FLAVOUR_CONFIG"
+    echo "   -f, --flavour <file.cfg>  configuration file name; default: $FLAVOUR_CONFIG"
     echo "   -d, --dryrun <file.cfg>   same as -f but without touching anyting"
-    echo "   -l, --list                list configurations"
+    echo "   -l, --list                list possible configurations"
     echo "   -r, --remove              cleanup artefacts"
-    echo "   -s, --sync                sync DWIN_SET to removable device and unmount device, optionally specify --flavour"
+    echo "   -s, --sync                sync DWIN_SET to removable device and unmount device, optionally use with --flavour"
     exit 1
   fi
 }
@@ -68,7 +68,8 @@ function main()
 
   pushd "$SCRIPT_DIR"  > /dev/null
 
-  source ./tools.sh && load_config "$BUILD_FLAVOUR" && list_configurations "$LIST_CONFIGS"
+  source ./tools.sh && load_config "$BUILD_FLAVOUR" && flavour_config_basic_sanity_check \
+  && list_configurations "$LIST_CONFIGS"
   usage "$HELP"
 
   sync_device $SYNC_REMOVABLE_DEVICE
