@@ -39,6 +39,11 @@ function copy_ressources()
 
     if [ "x$DRYRUN" != "x1" ] ; then
       cp -f $from $to
+
+    if [ "x$?" != "x0" ] ; then
+      echo "Failed to deploy from '$from' -> '$to'"
+      exit 1
+    fi
     fi
   done
 }
@@ -49,9 +54,21 @@ function main()
   read_args "$@"
   usage "$HELP"
 
-  echo -e "\nDeploy ressources ..."
+  local run_mode=""
+  if [ ! -z "$DRYRUN" ] ; then
+    run_mode=" (dry run)"
+
+  elif [ ! -z "$CLEANUP" ] ; then
+    run_mode=" (cleanup)"
+
+  else
+    run_mode=""
+  fi
+
+  echo -e "\nDeploy ressources${run_mode} ..."
   pushd "$SCRIPT_DIR" > /dev/null
-  source ./tools.sh  && load_config "$BUILD_FLAVOUR" && flavour_config_deploy_sanity_check && copy_ressources
+  source ./tools.sh  && load_config "$BUILD_FLAVOUR" && flavour_config_deploy_sanity_check && copy_ressources\
+  && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
   popd > /dev/null
 }
 

@@ -36,14 +36,22 @@ function usage()
 function run_tasks()
 {
   for task in "${TASKS[@]}" ; do
-    echo -e "\nRunning task $task"
+    
 
+    local task_arguments=""
     if [ "x$DRYRUN" == "x1" ] ; then
-      $task --dryrun
+      task_arguments="--dryrun"
     elif [ "x$CLEANUP" == "x1" ] ; then
-      $task --generate
+      task_arguments="--remove"
     else
-      $task --remove
+      task_arguments="--generate"
+    fi
+
+    echo -e "\nRunning task $task $task_arguments"
+    $task $task_arguments
+    if [ "x$?" != "x0" ] ; then
+      echo "Failed to execute task: '$task $task_arguments'"
+      exit 1
     fi
 
   done
@@ -55,21 +63,21 @@ function main()
   read_args "$@"
   usage "$HELP"
 
-  local reason=""
+  local run_mode=""
   if [ ! -z "$DRYRUN" ] ; then
-    reason=" (dry run) ..."
+    run_mode=" (dry run)"
 
   elif [ ! -z "$CLEANUP" ] ; then
-    reason=" (cleanup) ..."
+    run_mode=" (cleanup)"
 
   else
-    reason=" ..."
-
+    run_mode=""
   fi
   
-  echo -e "\nCompile ressources${reason}"
+  echo -e "\nCompile ressources${run_mode} ..."
   pushd "$SCRIPT_DIR" > /dev/null
-  source ./tools.sh &&  load_config "$BUILD_FLAVOUR" && flavour_config_compile_sanity_check && run_tasks
+  source ./tools.sh &&  load_config "$BUILD_FLAVOUR" && flavour_config_compile_sanity_check && run_tasks \
+  && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
   popd > /dev/null
 }
 

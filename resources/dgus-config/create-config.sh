@@ -42,11 +42,14 @@ function compile_configuration()
   f_name_wo_extension=${f_basename%%.*}    
   f_compiled="./${f_name_wo_extension}.cfg"
 
-  echo "create configuration from $f_basename"
-  echo "  -> $f_compiled"
 
   if [ "x$DRYRUN" != "x1" ] ; then
+    echo "create configuration from $f_basename"
+    echo "  -> $f_compiled"
     cat $1 | xxd -c 1 -r > $f_compiled
+  else
+    echo "create configuration from $f_basename (dry run)"
+    echo "  -> $f_compiled"
   fi
 }
 

@@ -40,9 +40,11 @@ function usage()
 function list_configurations()
 {
   if [ ! -z "$1" ] ; then
-    for f in `find $FLAVOUR_PATH -regex .*cfg$` ; do
+    pushd $FLAVOUR_PATH > /dev/null
+    for f in `find ./ -regex .*cfg$ -printf %f` ; do
       echo "$f"
     done
+    popd > /dev/null
     exit 0
   fi
 }
@@ -57,27 +59,22 @@ function main()
   source ./tools.sh && load_config "$BUILD_FLAVOUR" && list_configurations "$LIST_CONFIGS"
   usage "$HELP"
 
-  local reason=""
-  local compile_args=""
-  local deploy_args=""
+  local run_mode=""
+  local build_args=""
   if [ ! -z "$DRYRUN" ] ; then
-    reason=" (dry run) ..."
-    compile_args="--dryrun $BUILD_FLAVOUR"
-    deploy_args="--dryrun"
+    run_mode=" (dry run)"
+    build_args="--dryrun $BUILD_FLAVOUR"
   elif [ ! -z "$CLEANUP" ] ; then
-    reason=" (cleanup) ..."
-    compile_args="--remove"
-    deploy_args="--remove"
+    run_mode=" (cleanup)"
+    build_args="--remove"
   else
-    reason=" ..."
-    compile_args="--flavour $BUILD_FLAVOUR"
-    deploy_args="--generate"
+    build_args="--flavour $BUILD_FLAVOUR"
   fi
 
-  echo -e "\nBuild project $FLAVOUR_CONFIG${reason}\n"
+  echo -e "\nBuild project $FLAVOUR_CONFIG${run_mode} ...\n"
   print_config_info
 
-  ./compile.sh $compile_args && ./deploy.sh "$deploy_args"
+  ./compile.sh $build_args && ./deploy.sh $build_args && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
 
   popd > /dev/null
 }

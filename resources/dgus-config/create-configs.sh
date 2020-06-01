@@ -67,11 +67,21 @@ function main()
     usage 1
   fi
 
-  echo -e "\nCompile .txt configuration files -> $EXPORT_FOLDER_PATH_NAME"
+  local run_mode=""
+  local task_run_mode=""
+  if [ "x$DRYRUN" == "x1" ] ; then
+    task_run_mode="--dryrun"
+    run_mode=" (dry run) ..."
+  else
+    task_run_mode="--generate"
+    run_mode=" ..."
+  fi
+  
+  echo -e "\nCompile .txt configuration files -> $EXPORT_FOLDER_PATH_NAME${run_mode}"
     
   source $SCRIPT_DIR/create-configs.cfg
   for txt_config in "${DGUS_HUMAN_READABLE_CONFIGURATIONS[@]}" ; do
-    $SCRIPT_DIR/create-config.sh --dryrun $txt_config
+    $SCRIPT_DIR/create-config.sh $task_run_mode $txt_config
   done
 
   popd > /dev/null
