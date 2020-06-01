@@ -93,3 +93,48 @@ function print_config_info()
   echo "PROJECT BASE:   $DWIN_PROJECT_BASE"
   echo "RESOURCES BASE: $RESOURCES_BASE"
 }
+
+
+# replaced DWIN_SET folder on removable device and unmounts device
+# $1 ... source: path containing DWIN_SET folder 
+# $2 ... destination: path to mounted device
+function copy_project_to_removable_disk()
+{
+  local source_path=$1
+  local dwin_set="DWIN_SET"
+  local source_path_dwin_set="${1}/${dwin_set}"
+  local destination_path=$2
+
+  local usage="\
+  Usage: [ arg1 arg2 ]\n\
+     arg1: source folder containing ./${dwin_set}/ (absolute path)\n\
+     arg2: destination root folder to removable device (absolute path)\n\
+  "
+
+  if [ ! -d "$source_path" ] ; then
+    echo "Failed to locate source directory '$source_path'."
+    echo -e $usage
+    return 1
+  fi
+
+  if [ ! -d "$source_path_dwin_set" ] ; then
+    echo "Failed to locate source directory '$source_path_dwin_set'."
+    echo -e $usage
+    return 1
+  fi
+  
+  if [ ! -d "$destination_path" ] ; then
+    echo "Failed to locate removable device root directory '$destination_path'."
+    echo -e $usage
+    return 1
+  fi
+
+  pushd $destination_path > /dev/null
+
+  echo "Cleaning $dwin_set on removable device ($destination_path)" && rm -drf ./${dwin_set}/* \
+  && echo -e "copy ${source_path_dwin_set} \n  -> $destination_path" && cp -dprf ${source_path_dwin_set} ./ \
+  && echo "unmounting device '$destination_path'" && cd ../ && umount $destination_path && sync \
+  && echo -e "successfully copied $source_path_dwin_set \n  -> $destination_path/${dwin_set}"
+
+  popd > /dev/null
+}

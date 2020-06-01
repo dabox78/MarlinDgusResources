@@ -16,6 +16,7 @@ function read_args()
       -d|--dryrun) BUILD_FLAVOUR="$2"; DRYRUN=1; shift ;;
       -l|--list) LIST_CONFIGS=1 ;;
       -r|--remove) CLEANUP=1 ;;
+      -s|--sync) SYNC_REMOVABLE_DEVICE="$2"; shift; ;;
       *) echo "$SCRIPT_NAME Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
@@ -26,12 +27,13 @@ function read_args()
 function usage()
 {
   if [ ! -z "$1" ] ; then
-    echo "$SCRIPT_NAME [ -h | -f <file.cfg> | -d <file.cfg> | -l | -r ]"
-    echo "   -h, --help                prints this help text"
+    echo "$SCRIPT_NAME [ -h | -f <file.cfg> | -d <file.cfg> | -l | -r | -s ]"
+    echo "   -h, --help                print this help text"
     echo "   -f, --flavour <file.cfg>  configuration file name (no path); default: $FLAVOUR_CONFIG"
     echo "   -d, --dryrun <file.cfg>   same as -f but without touching anyting"
     echo "   -l, --list                list configurations"
     echo "   -r, --remove              cleanup artefacts"
+    echo "   -s, --sync                sync DWIN_SET to removable device and unmount device, optionally specify --flavour"
     exit 1
   fi
 }
@@ -50,6 +52,16 @@ function list_configurations()
 }
 
 
+function sync_device()
+{
+  local removable_device="$1"
+  if [ ! -z "$removable_device" ] ; then
+    copy_project_to_removable_disk ${SCRIPT_DIR}/${DWIN_PROJECT_BASE} $removable_device && exit 0
+    echo "failed to sync project device: '$DWIN_PROJECT_BASE' -> '$removable_device'"
+    exit 1
+  fi
+}
+
 function main()
 {
   read_args "$@"
@@ -59,8 +71,10 @@ function main()
   source ./tools.sh && load_config "$BUILD_FLAVOUR" && list_configurations "$LIST_CONFIGS"
   usage "$HELP"
 
+  sync_device $SYNC_REMOVABLE_DEVICE
+
   local run_mode=""
-  local build_args=""
+  local build_args=""  
   if [ ! -z "$DRYRUN" ] ; then
     run_mode=" (dry run)"
     build_args="--dryrun $BUILD_FLAVOUR"
