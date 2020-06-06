@@ -29,10 +29,14 @@ function usage()
 {
   if [ ! -z "$1" ] ; then
     echo "$SCRIPT_NAME [ -h | -g <file.txt> | -d | -r ]"
-    echo "   -h, --help            prints this help text"
-    echo "   -g, --generate        compile configuration files to binary format"
-    echo "   -d, --dryrun          same as -g but without touching anything"
-    echo "   -r, --remove          remove artefacts folder ($EXPORT_FOLDER_PATH_NAME)"
+    echo "  -h, --help"
+    echo "        prints this help text"
+    echo "  -g, --generate"
+    echo "        compile configuration files to binary format"
+    echo "  -d, --dryrun"
+    echo "        same as -g but without touching anything"
+    echo "  -r, --remove"
+    echo "        remove artefacts folder ($EXPORT_FOLDER_PATH_NAME)"
     exit 1
   fi
 }

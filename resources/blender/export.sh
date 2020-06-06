@@ -28,11 +28,16 @@ function read_args()
 function usage()
 {
   if [ ! -z "$1" ] ; then
-    echo "$SCRIPT_NAME [ -h | -g | -d | -r ]"
-    echo "   -h, --help            prints this help text"
-    echo "   -g, --generate        run this script (export)"
-    echo "   -d, --dryrun          same as -g but without touching antything"
-    echo "   -r, --remove          remove artefacts folder ($EXPORT_FOLDER_PATH_NAME)"
+    echo "$SCRIPT_NAME [-h] [-g|-d] [-r]"
+    echo ""
+    echo "  -h, --help"
+    echo "        prints this help text"
+    echo "  -g, --generate"
+    echo "        run this script (export)"
+    echo "  -d, --dryrun"
+    echo "        same as -g but without touching antything"
+    echo "  -r, --remove"
+    echo "        remove artefacts folder ($EXPORT_FOLDER_PATH_NAME)"
     exit 1
   fi
 }

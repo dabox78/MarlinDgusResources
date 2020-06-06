@@ -25,9 +25,12 @@ function usage()
 {
   if [ ! -z "$1" ] ; then
     echo "$SCRIPT_NAME [ -h | -g <file.txt> | -d ]"
-    echo "   -h, --help                 prints this help text"
-    echo "   -g, --generate <file.txt>  compile configuration file to binary format"
-    echo "   -d, --dryrun <file.txt>    same as -g but without touching anything"
+    echo "  -h, --help"
+    echo "        prints this help text"
+    echo "  -g, --generate <file.txt>"
+    echo "        compile configuration file to binary format"
+    echo "  -d, --dryrun <file.txt>"
+    echo "        same as -g but without touching anything"
     exit 1
   fi
 }

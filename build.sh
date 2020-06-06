@@ -27,13 +27,20 @@ function read_args()
 function usage()
 {
   if [ ! -z "$1" ] ; then
-    echo "$SCRIPT_NAME [ -h | -f <file.cfg> | -d <file.cfg> | -l | -r | -s ]"
-    echo "   -h, --help                print this help text"
-    echo "   -f, --flavour <file.cfg>  configuration file name; default: $FLAVOUR_CONFIG"
-    echo "   -d, --dryrun <file.cfg>   same as -f but without touching anyting"
-    echo "   -l, --list                list possible configurations"
-    echo "   -r, --remove              cleanup artefacts"
-    echo "   -s, --sync                sync DWIN_SET to removable device and unmount device, optionally use with --flavour"
+    echo "$SCRIPT_NAME [-h] [[-f|-d] <file.cfg>] [-l] [-r] [-s]"
+    echo ""
+    echo "  -h, --help"
+    echo "        print this help text"
+    echo "  -f, --flavour <file.cfg>"
+    echo "        configuration file name; default: $FLAVOUR_CONFIG"
+    echo "  -d, --dryrun <file.cfg>"
+    echo "        same as -f but without touching anyting"
+    echo "  -l, --list"
+    echo "        list possible configurations"
+    echo "  -r, --remove"
+    echo "        cleanup artefacts"
+    echo "  -s, --sync <device_mount_root_path>"
+    echo "        sync DWIN_SET to removable device and unmount device, optionally use with --flavour"
     exit 1
   fi
 }

@@ -22,12 +22,18 @@ function read_args()
 function usage()
 {
   if [ ! -z "$1" ] ; then
-    echo "$SCRIPT_NAME [ -h | -f <file> | -d | -v | -r ]"
-    echo "   -h, --help            prints this help text"
-    echo "   -f, --flavour <file>  configuration file name; default: $FLAVOUR_CONFIG"
-    echo "   -d, --dryrun <file>   same as -f but without touching anything"
-    echo "   -v, --verbose         verbose"
-    echo "   -r, --remove          cleanup artefacts"
+    echo "$SCRIPT_NAME [-h] [[-f|-d] <file> -v] [-r]"
+    echo ""
+    echo "  -h, --help"
+    echo "        prints this help text"
+    echo "  -f, --flavour <file>"
+    echo "        configuration file name; default: $FLAVOUR_CONFIG"
+    echo "  -d, --dryrun <file>"
+    echo "        same as -f but without touching anything"
+    echo "  -v, --verbose"
+    echo "        try to be more verbose during process"
+    echo "  -r, --remove"
+    echo "        cleanup artefacts"
     exit 0
   fi
 }
