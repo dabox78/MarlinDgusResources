@@ -5,9 +5,9 @@ SCREENDSIZE=480X272
 SPADDRESS=5000
 Version=-1
 [IMG]
-010=010-main.bmp
-012=012-boot-screen.bmp
-020=020-temperatures.bmp
+024=024-boot-screen.bmp
+026=026-main.bmp
+028=028-temperatures.bmp
 030=030-printer-status.bmp
 032=032-printer-status-2.bmp
 040=040-manual-move.bmp
