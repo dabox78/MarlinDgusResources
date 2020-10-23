@@ -30,9 +30,9 @@ for example:
 1. modify files in ${RESOURCES_BASE}/ as you wish
 2. ./build.sh: this will prepare (export, convert, create) almost all material (.wav, .bmp, .cfg) except icon files, \*.bin files and DWprj.hmi
 3. start DGUS Tool
-   1. load project
+   1. load project (DGUS Tool V7.388)
    3. optinal: make modifiactions
-   4. click "Generating Configuration File" to create \*.bin files
+   4. click "Generate" to create \*.bin files
    5. optional: if icon resources were modified export them with the DWIN ICO generator from the `./display/icon/nnn-xyz.ico/` folder to the `./DWIN_SET/nnn-xyz.ico` file
 4. flash DGUS display
    1. store the complete DWIN_SET folder onto a CF card; since you will most likely do this many times use sth. as follows (Ubuntu): 
