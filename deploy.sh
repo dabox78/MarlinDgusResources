@@ -56,7 +56,7 @@ function copy_ressources()
 function main()
 {
   read_args "$@"
-  source ./tools.sh  && load_config "$BUILD_FLAVOUR" && flavour_config_deploy_sanity_check
+  source ./tools.sh && load_config "$BUILD_FLAVOUR" && flavour_config_deploy_sanity_check
   usage "$HELP"
 
   local run_mode=""

@@ -57,11 +57,11 @@ function flavour_config_deploy_sanity_check()
 {
   flavour_config_basic_sanity_check
   
-  if [ -z "$RESOURCES_FROM" ] ; then
+  if [ -z "${RESOURCES_FROM[@]}" ] ; then
       echo "Variable RESOURCES_FROM is not set in ${FLAVOUR_PATH}/${FLAVOUR_CONFIG}."
       exit 1
   fi
-  if [ -z "$RESOURCES_TO" ] ; then
+  if [ -z "${RESOURCES_TO[@]}" ] ; then
       echo "Variable RESOURCES_TO is not set in ${FLAVOUR_PATH}/${FLAVOUR_CONFIG}."
       exit 1
   fi

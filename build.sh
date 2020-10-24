@@ -50,7 +50,7 @@ function list_configurations()
 {
   if [ ! -z "$1" ] ; then
     pushd $FLAVOUR_PATH > /dev/null
-    for f in `find ./ -regex .*cfg$ -printf %f` ; do
+    for f in `find ./ -regex .*cfg$ -printf "%f "` ; do
       echo "$f"
     done
     popd > /dev/null
@@ -96,7 +96,7 @@ function main()
   echo -e "\nBuild project $FLAVOUR_CONFIG${run_mode} ...\n"
   print_config_info
 
-  ./compile.sh $build_args && ./deploy.sh $build_args && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
+  (./compile.sh $build_args) && (./deploy.sh $build_args) && echo -e "\n$SCRIPT_NAME finished successfully${run_mode}.\n"
 
   popd > /dev/null
 }
