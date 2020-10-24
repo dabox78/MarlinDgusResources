@@ -58,3 +58,9 @@ Notes:
 * 015-breviceps-tic-toc-click.wav
   * License: CC http://creativecommons.org/licenses/by/3.0/
   * https://freesound.org/people/Breviceps/sounds/448081/
+* 130-taranp-horn-fail-wahwah-2.wav
+  * License: CC http://creativecommons.org/licenses/by/3.0/
+  * https://freesound.org/people/TaranP/sounds/362205/#
+* 130-mrmacross-negativebuzz
+  * License: CC http://creativecommons.org/licenses/by/3.0/
+  * https://freesound.org/people/mrmacross/sounds/186896/
